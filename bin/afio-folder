@@ -1,0 +1,33 @@
+#!/bin/sh
+#
+# create afio archive of a directory
+#
+
+DIRECTORY="$1"
+ARCHIVE="$2"
+
+# moan about missing argument...
+if [ -z "$DIRECTORY" ]; then
+	echo "Missing name of directory to archive"
+	exit 1
+fi
+
+# if no second argument, use directory for archive name
+if [ -z "$ARCHIVE" ]; then
+	ARCHIVE="${DIRECTORY}.afio"
+fi
+
+if [ -f "$ARCHIVE" ]; then
+	echo "Archive [$ARCHIVE] already exists"
+	exit 1
+fi
+
+if [ ! -d "$DIRECTORY" ]; then
+	echo "Directory [$DIRECTORY] does not exist"
+	exit 1
+fi
+
+# at this point it should be OK to continue
+find ${DIRECTORY} | afio -G9 -z -o ${ARCHIVE} && {
+#	rm -rf ${DIRECTORY}
+}

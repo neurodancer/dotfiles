@@ -1,0 +1,24 @@
+#!/bin/sh
+# put a dotfile under revision control
+#
+
+# user supplies dot file to process
+DOTF="$1"
+if [ -z "$DOTF" ]; then
+	echo "Must supply name of a dot file or folder"
+	exit 1
+fi
+
+# make it relative to the home directory
+DOTF="~/${DOTF}"
+
+# dot must be present
+if [ ! -d "$DOTF" -a ! -f "$DOTF" ]; then
+	echo "[$DOTF] does not exist"
+	exit 1
+fi
+
+
+
+
+
