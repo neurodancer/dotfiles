@@ -1,0 +1,15 @@
+#!/bin/sh
+# grab a homedir file or directory and link it
+# and add it to git
+#
+
+[ -z "$1" ] && echo "ERROR: no argument" && exit 1
+
+TARGET="$1"
+
+echo "Putting [$TARGET] under source control"
+
+if [ -d "$TARGET" ]
+then
+	cp -R "$TARGET" .
+
