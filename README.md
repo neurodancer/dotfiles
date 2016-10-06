@@ -1,4 +1,4 @@
-# homedir
+# dotfiles
 
 ## goals
 
