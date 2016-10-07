@@ -19,3 +19,5 @@ export LANGUAGE=C
 export LC_ALL=C
 export LANG=C
 
+source ~/.dotfiles/liquidprompt/liquidprompt
+
