@@ -8,6 +8,13 @@
   latest stuff
 - eventually try to make some of this available to Windows
 
+## TODO
+
+- finish moving dot files I want under control into project
+- move ~/bin files under control
+- start working on OS specific shell bits
+- begin porting to Linux ASAP
+
 ## tested on
 
 - MacOS El Capitan
