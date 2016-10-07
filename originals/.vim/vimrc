@@ -1,0 +1,177 @@
+" version 6.1
+" get the global configuration
+"source /etc/vimrc
+set bg=dark
+"set smartindent
+filetype plugin on
+set grepprg=grep\ -nH\ $*
+filetype indent on
+set pastetoggle=[2~
+set shm+=I
+set smarttab
+"set softtabstop=4
+"set shiftwidth=4
+"set tabstop=8
+set sw=4
+set tw=4
+set backspace=2
+set noexpandtab
+set autowrite
+"
+" options for file backups and patchmode
+"
+"set backup
+"set backupext=".bak"
+"set backupcopy=auto
+"set backupdir=/home/shannon/var/vim
+"set backupskip=/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,$HOME/*
+"set patchmode=.orig
+let savevers_types='*'
+let savevers_max=1000
+let savevers_purge=1
+let savevers_dirs="~/var/vim"
+" patchmode is required for savevers to work
+" set patchmode=.ORIG
+set backup
+"
+"
+"
+set dictionary=/usr/share/dict/words
+set nodigraph
+set noesckeys
+set formatoptions=cqrto
+"set highlight=8,d,e,i,m,M,r,s
+set nohls
+set history=100
+"set is
+set smartcase
+set noinsertmode
+set iskeyword=@,48-57,_,192-255,-,.
+set joinspaces
+set laststatus=2
+set nolazyredraw
+set magic
+set modeline
+"set modelines=1
+set nonumber
+set path=.,$VIMRUNTIME/syntax/
+set report=0
+set ruler
+if has("unix")
+  let shell='bash'
+endif
+set shortmess=at
+set showcmd
+set showmatch
+set showmode
+set suffixes=.bak.swp
+set notextmode
+set textwidth=0
+set title
+set ttyfast
+set ttybuiltin
+set ttymouse=xterm2
+set mouse=a
+set ttyscroll=10
+set viminfo=%,'50,\"100,:100,n~/.viminfo
+set visualbell
+"set   whichwrap=<,>
+set   wildchar=<TAB>
+set   wrapmargin=8
+set writebackup
+set updatetime=5000
+set updatecount=200
+"
+"
+" -------------------------------------------------- MAP
+"
+" NOTE: most mappings I keep in my .exrc file so all versions of
+" vi can make use of them.
+" 
+" MAPs for moving between windows easily, thanks to Jonathan McPherson
+map <c-j> <c-w>j<c-w>_
+map <c-k> <c-w>k<c-w>_
+"map <c-h> <c-w>h<c-w><bar>
+"map <c-h> <c-w>l<c-w><bar>
+map <c-h> <c-w>h<c-w>
+map <c-h> <c-w>l<c-w>
+"" exact input mode
+"map! e :se noai wm=0 formatoptions=ta
+"" Set 'normal' input mode with usual autoindent and wrapmargn:
+"map! n :se ai wm=2 formatoptions=cqrta
+"" Read pasted text, clean up lines with fmt.  Type CTRL-D when done:
+"" NOTE:TODO: consider moving this to .exrc
+map!  :r!fmt
+map! , :r!cat
+" With Vim-4 the format command was just 'Q' and
+  nnoremap Q gq
+  vnoremap Q gq
+" "tal" is the "trailer alignment" filter program
+" vmap #t !tal<CR>
+  vmap #t !tal -p 0<CR>
+  map K :<BS>
+  noremap <C-G> 2<C-G>
+" Many shells allow editing in "Emacs Style".
+" Although I love Vi, I am quite used to this kind of editing now.
+" So here it is - command line editing commands in emacs style:
+  cnoremap <C-A> <Home>
+  cnoremap <C-F> <Right>
+  cnoremap <C-B> <Left>
+  cnoremap <ESC>b <S-Left>
+  cnoremap <ESC>f <S-Right>
+  cnoremap <ESC><C-H> <C-W>
+" Some editing is helpful in insert mode, too:
+  inoremap <C-F> <Right>
+  inoremap <C-B> <Left>
+  vmap ,ctabs :s/^>[ <C-I>]\+\([^>]\)/> \1/
+"
+"
+" -------------------------------------------------- AUTO COMMANDS
+"
+"
+autocmd!
+" set the textwidth to 70 characters for replies (email&usenet)
+autocmd BufEnter * :syntax sync fromstart
+au BufRead .letter,mutt*,nn.*,snd.* set tw=72
+au BufRead .c,.pl,.sh,.h,.cpp,.hpp,.C,.H,.lsp,.lisp,.scm,.scheme set tw=0 autoindent
+au BufRead vimrc,.vimrc set tw=0
+au BufRead *.note set tw=72 wrapmargin=8
+au BufRead *.nroff set tw=72 wrapmargin=8
+au BufRead *.ms set tw=72 wrapmargin=8
+au BufRead *.me set tw=72 wrapmargin=8
+au BufRead .followup,.article,.letter :normal 1G}j
+"au BufRead .mutt/*.rc setf muttrc
+"au BufRead ~/.mutt/*.rc setf muttrc
+"au BufRead */.mutt/*.rc setf muttrc
+"
+" load VIM syntax files
+"
+if has("syntax")
+    so $VIMRUNTIME/syntax/syntax.vim
+endif
+"
+" load custom color mapping
+" so $HOME/.vim/colors.rc
+"
+"       vim:tw=70 et sw=4 comments=\:\"
+"let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapCTabSwitchBuffs = 1
+"let g:sh_fold_enabled = 1
+"set foldtext=MyFoldText()
+"function MyFoldText()
+"    let line = getline(v:foldstart) 
+"    let sub = substitute(line, '/\*\|\*/\|{
+"    return v:folddashes . sub
+"endfunction
+"set foldmethod=syntax
+"
+" turn on syntax highlighting and hlsearch 
+" 
+if &t_Co > 2 
+    syntax on
+"    set hlsearch
+endif
+"
+" fix for osx crontab
+"
+au FileType crontab set nobackup nowritebackup

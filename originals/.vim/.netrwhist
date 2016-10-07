@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/shannon/Desktop/GPG Decrypt in Place.workflow'
+let g:netrw_dirhist_2='/Users/shannon/src/ruby/roller'
+let g:netrw_dirhist_3='/Users/shannon/src/lib/gadfly'
+let g:netrw_dirhist_4='/Users/shannon/src/lib/pwiki'

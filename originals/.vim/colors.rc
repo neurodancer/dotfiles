@@ -1,0 +1,23 @@
+" -------------------------------------------------- colors
+syntax on
+hi clear
+hi Comment    ctermfg=Green
+hi Constant   ctermfg=DarkGreen
+hi Special    ctermfg=DarkCyan
+hi Identifier ctermfg=Gray
+hi Statement  ctermfg=White
+hi PreProc    ctermfg=Gray
+hi Type       ctermfg=White
+hi Ignore     ctermfg=White
+hi Error      ctermfg=LightRed    ctermbg=None
+hi LineNr     ctermfg=DarkGreen   ctermbg=None
+hi StatusLine ctermfg=Blue        ctermbg=White
+hi SpecialKey ctermfg=DarkRed
+hi NonText    ctermfg=DarkRed
+hi Include    ctermfg=DarkCyan
+hi Define     ctermfg=DarkCyan
+hi Macro      ctermfg=DarkCyan
+hi PreCondit  ctermfg=Cyan
+hi Search     ctermfg=Gray       ctermbg=Black
+hi IncSearch  ctermfg=Gray       ctermbg=Black
+"
