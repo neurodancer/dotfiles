@@ -47,7 +47,7 @@ cp -Rv ${DOTF} ${DEST}
 git add ${DEST}
 git commit -m "added new dot file: $DEST"
 git push
-if ! rm -v ${DOTF}; then
+if ! rm -rfv ${DOTF}; then
     echo "Unable to remove ${DOTF}"
 else
     if ! ln -s $(pwd)/$(basename ${DEST}) ${DOTF}; then
